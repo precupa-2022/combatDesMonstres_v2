@@ -25,7 +25,7 @@ statut_combat = "Aucun"
 
 boucle_jeu = True
 while boucle_jeu:
-    force_adversaire = random.randint(1, 5)      # force de monstre
+    force_adversaire = random.randint(1, 5)     # force de monstre
     numero_adversaire = numero_adversaire + 1   # augumenter les nombres de monstres combatus
 
     # afficher le menu de la partie et demander l'utilisateur de faire une choix
@@ -61,15 +61,15 @@ while boucle_jeu:
             if lance_de <= force_adversaire:
                 niveau_vie = niveau_vie - force_adversaire
                 nombre_defaites = nombre_defaites + 1
-                combat_statut = "Défaite"
+                statut_combat = "Défaite"
             else:  # niveau de vie de l'usager augumente dans le cas d'une victoire
                 niveau_vie = niveau_vie + force_adversaire
                 nombre_victoires = nombre_victoires + 1
                 nombre_victoires_consecutives = nombre_victoires_consecutives + 1
-                combat_statut = "Victoire"
+                statut_combat = "Victoire"
 
             # combat soldé par la victoire de l'usager
-            if combat_statut == "Victoire":
+            if statut_combat == "Victoire":
                 print(f"Niveau de vie : {niveau_vie}")
                 print(f"Nombre de victoires consécutives : {nombre_victoires_consecutives}")
             else:  # combat soldé par la défaite de l'usager
@@ -87,6 +87,7 @@ while boucle_jeu:
             if niveau_vie <= 0:
                 print(f"La partie est terminée, vous avez vaincu {nombre_victoires} monstre(s).")
                 choix_combattre = False
+                boucle_jeu = False
 
     elif choix == 2:  # le choix utilisateur est de conturner cet adversaire et aller ouvrir une autre porte
         niveau_vie = niveau_vie - 1  # pénalité de 1 point de vie
